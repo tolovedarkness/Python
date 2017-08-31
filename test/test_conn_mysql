@@ -1,0 +1,74 @@
+# coding:utf8
+
+import MySQLdb
+
+conn = MySQLdb.Connect(
+                        host = '127.0.0.1',
+                        port = 3306,
+                        user = 'root',
+                        passwd = '123456',
+                        db = 'test',
+                        charset = 'utf8'
+    )
+
+cursor = conn.cursor()
+
+#查询数据
+sql = 'select * from student'
+cursor.execute(sql)
+
+#输出有多条数据
+print cursor.rowcount
+
+#查询1条数据 
+rs = cursor.fetchone()
+print rs
+
+#查询3条数据
+rs = cursor.fetchmany(3)
+print rs
+
+#查询全部
+rs = cursor.fetchall()
+#对数据进行格式化输出
+for row in rs:
+    print 'id=%s,username=%s' % row
+print rs
+
+#输出连接信息
+print conn
+print cursor
+
+cursor.close()
+conn.close()
+
+
+#pytho中对mysql数据库curd
+
+# coding:utf8
+
+import MySQLdb
+
+conn = MySQLdb.Connect(
+                        host = '127.0.0.1',
+                        port = 3306,
+                        user = 'root',
+                        passwd = '123456',
+                        db = 'test',
+                        charset = 'utf8'
+    )
+
+cursor = conn.cursor()
+
+sql_insert = 'insert into student(id,username) values(1004,"张三")'
+sql_delete = 'delete from student where id =1002'
+sql_update = 'update student set username="张三丰" where id =1004' 
+        rs = cursor.execute(sql_insert)
+        print rs
+        rs = cursor.execute(sql_delete)
+        print rs       
+        rs = cursor.execute(sql_update)
+        print rs   
+conn.commit()
+cursor.close()
+conn.close()
