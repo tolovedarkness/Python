@@ -53,5 +53,4 @@ if __name__ == '__main__':
     obj_spider = SpiderMain()
     # 启动爬虫
     obj_spider.craw(root_url)
-    # 有问题 待解决
     
