@@ -42,7 +42,6 @@ print cursor
 cursor.close()
 conn.close()
 
-
 #pytho中对mysql数据库curd
 
 # coding:utf8
